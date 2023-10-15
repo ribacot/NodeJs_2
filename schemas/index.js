@@ -1,3 +1,4 @@
 const addSchem = require("./contacts");
+const favoriteSchem = require("./favorite");
 
-module.exports = { addSchem };
+module.exports = { addSchem, favoriteSchem };

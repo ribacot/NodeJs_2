@@ -1,39 +1,29 @@
 const { ctrlWrapper } = require("../helpers");
-
-const {
-	listContacts,
-	getContactById,
-	removeContact,
-	addContact,
-	chengeContact,
-} = require("../models/contacts");
+const Contact = require("../models/contact");
 
 const { HttpError } = require("../helpers");
 
 const getAll = async (req, res, next) => {
-	const result = await listContacts();
+	const result = await Contact.find();
 	res.status(200).json(result);
 };
 const getById = async (req, res, next) => {
 	const { contactId } = req.params;
-	const result = await getContactById(contactId);
+	const result = await Contact.findById(contactId);
+	console.log(result);
 	if (!result) {
 		throw HttpError(404, "Not found");
 	}
 	res.status(200).json(result);
 };
 const add = async (req, res, next) => {
-	const { error } = addSchem.validate(req.body);
-	if (error) {
-		throw HttpError(400, error.message);
-	}
-	const result = await addContact(req.body);
+	const result = await Contact.create(req.body);
 	res.status(201).json(result);
 };
 
 const delContact = async (req, res, next) => {
 	const { contactId } = req.params;
-	const result = await removeContact(contactId);
+	const result = await Contact.findOneAndRemove(contactId);
 	if (!result) {
 		throw HttpError(404, "Not found");
 	}
@@ -41,16 +31,20 @@ const delContact = async (req, res, next) => {
 };
 
 const updContact = async (req, res, next) => {
-	const { error } = addSchem.validate(req.body);
-	if (error) {
-		throw HttpError(400, error.message);
-	}
 	const { contactId } = req.params;
-	const result = await chengeContact(contactId, req.body);
+	const result = await Contact.findByIdAndUpdate(contactId, req.body, { new: true });
 	if (!result) {
 		throw HttpError(404, "Not found");
 	}
-	console.log("result", result);
+	res.status(201).json(result);
+};
+const updFavorite = async (req, res, next) => {
+	const { contactId } = req.params;
+	const result = await Contact.findByIdAndUpdate(contactId, req.body, { new: true });
+	if (!result) {
+		throw HttpError(404, "Not found");
+	}
+	console.log("favorites", result);
 	res.status(201).json(result);
 };
 
@@ -60,4 +54,5 @@ module.exports = {
 	delContact: ctrlWrapper(delContact),
 	updContact: ctrlWrapper(updContact),
 	add: ctrlWrapper(add),
+	updFavorite: ctrlWrapper(updFavorite),
 };

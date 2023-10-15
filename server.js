@@ -1,8 +1,7 @@
-// ioSChbm7Sf1UR4VB
 const app = require("./app");
 const mongoose = require("mongoose");
-const DP_HOST =
-	"mongodb+srv://Andrii:ioSChbm7Sf1UR4VB@cluster0.etps8iu.mongodb.net/contacts_reader?retryWrites=true&w=majority";
+const {DP_HOST} =process.env 
+console.log(DP_HOST)
 mongoose.set("strictQuery", true);
 
 mongoose
