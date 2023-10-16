@@ -1,7 +1,6 @@
 const app = require("./app");
 const mongoose = require("mongoose");
 const {DP_HOST} =process.env 
-console.log(DP_HOST)
 mongoose.set("strictQuery", true);
 
 mongoose
