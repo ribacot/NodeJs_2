@@ -1,3 +1,18 @@
-const ctrlContacts = require("./contacts");
+const { ctrlWrapper } = require("../../helpers");
 
-module.exports = { ctrlContacts };
+const getAll = require("./getAll");
+const getById = require("./getById");
+const add = require("./add");
+const delContact = require("./delContact");
+const updContact = require("./updContact");
+const updFavorite = require("./updFavorite");
+
+
+module.exports = {
+	getAll: ctrlWrapper(getAll),
+	getById: ctrlWrapper(getById),
+	delContact: ctrlWrapper(delContact),
+	updContact: ctrlWrapper(updContact),
+	add: ctrlWrapper(add),
+	updFavorite: ctrlWrapper(updFavorite),
+};;
