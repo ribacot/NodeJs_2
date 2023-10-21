@@ -6,7 +6,7 @@ const ctrlContacts = require("../../controllers/contacts/index");
 
 const { validateBody, isValidId, isAuthenticated } = require("../../middlewares");
 
-const { schemasJoi } = require("../../schemas");
+const { schemasJoi } = require("../../schemas/contacts");
 
 router.get("/", isAuthenticated, ctrlContacts.getAll);
 

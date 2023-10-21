@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const { patterns } = require("../schemas/");
+const { patterns } = require("../schemas/contacts");
 const { hendleMongooseError } = require("../helpers");
 
 const contactSchema = Schema(

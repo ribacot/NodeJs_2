@@ -1,9 +1,8 @@
 const { Schema, model } = require("mongoose");
-const { patterns } = require("../schemas");
+const { patterns } = require("../schemas/contacts");
 const Joi = require("joi");
-const { hendleMongooseError } = require("../helpers");
+const { hendleMongooseError, subscriptionTags } = require("../helpers");
 
-const subscriptionTegs = ["starter", "pro", "business"];
 const userSchema = new Schema(
 	{
 		name: { type: String, required: true },
@@ -19,38 +18,18 @@ const userSchema = new Schema(
 		},
 		subscription: {
 			type: String,
-			enum: subscriptionTegs,
+			enum: subscriptionTags,
 			default: "starter",
 		},
 		token: {
-			String,
-			// default: "",
-		}
-		
+			type: String,
+			default: "",
+		},
 	},
 	{ versionKey: false, timestamps: true }
 );
 userSchema.post("save", hendleMongooseError);
 
-const registerSechemaJoi = Joi.object({
-	name: Joi.string().required(),
-	email: Joi.string()
-		.regex(patterns.emailPattern)
-		.message({ "string.pattern.base": "invalid email" })
-		.required(),
-
-	subscription: Joi.string()
-		.valid(...subscriptionTegs)
-		.required(),
-	password: Joi.string().min(6).required(),
-});
-
-const loginSechemaJoi = Joi.object({
-	email: Joi.string().regex(patterns.emailPattern).required(),
-	password: Joi.string().min(6).required(),
-});
-const schemas = { registerSechemaJoi, loginSechemaJoi };
-
 const User = model("User", userSchema);
 
-module.exports = { User, schemas };
+module.exports = User;

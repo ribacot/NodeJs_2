@@ -1,7 +1,6 @@
 const addSchem = require("./contacts");
 const favoriteSchem = require("./favorite");
-// const registerSechemaJoin = require("./register");
-const patterns = require("./patterns.js");
+const patterns = require("../../helpers/patterns.js");
 
 const schemasJoi = { addSchem, favoriteSchem };
 
