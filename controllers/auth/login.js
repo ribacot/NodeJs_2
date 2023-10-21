@@ -8,19 +8,23 @@ const { HttpError } = require("../../helpers");
 const login = async (req, res) => {
 	const { email, password } = req.body;
 	const user = await User.findOne({ email });
-
+    console.log(user)
+	if (!user) {
+		throw HttpError(401);
+	}
 	if (user.token) {
 		throw HttpError(409, "User in session");
 	}
 
 	const passwordMatch = await bcrypt.compare(password, user.password);
 	if (!passwordMatch) {
-		const token = "";
-		await User.updateOne({ _id: user._id }, { token });
+		await User.updateOne({ _id: user._id }, { token:"" });
 		throw HttpError(401, "Invalid credentials");
 	}
-
-	const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: "2h" });
+const payload={
+    id:user._id
+}
+	const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "2h" });
 	await User.updateOne({ _id: user._id }, { token });
 	res.status(201).json({
 		token,
