@@ -9,13 +9,21 @@ const register = async (req, res) => {
 	const user = await User.findOne({ email });
 
 	if (user) {
-		throw HttpError(409, "User already exists");
+		throw HttpError(409, "Email in use");
 	}
 	const hashPassword = await bcrypt.hash(password, 10);
 
-	const newUser = await User.create({ ...req.body, password: hashPassword});
-	const token = jwt.sign({ id: newUser._id }, JWT_SECRET, { expiresIn: "2h" });
-	await User.updateOne({ _id: newUser._id }, { token });
-	res.status(201).json(token);
+	const newUser = await User.create({ ...req.body, password: hashPassword });
+	// const token = jwt.sign({ id: newUser._id }, JWT_SECRET, { expiresIn: "23h" });
+	// await User.updateOne({ _id: newUser._id }, { token });
+	// res.status(201).json({token});
+	res.status(201).json({
+		user: {
+			name: newUser.name,
+			email: newUser.email,
+			subscription: newUser.subscription,
+		},
+	});
 };
+
 module.exports = register;

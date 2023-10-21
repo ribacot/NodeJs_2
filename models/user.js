@@ -40,6 +40,7 @@ const registerSechemaJoi = Joi.object({
 		.required(),
 	password: Joi.string().min(6).required(),
 });
+
 const loginSechemaJoi = Joi.object({
 	email: Joi.string().regex(patterns.emailPattern).required(),
 	password: Joi.string().min(6).required(),
