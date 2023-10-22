@@ -13,14 +13,13 @@ const isAuthenticated = async (req, res, next) => {
 	}
 	try {
 		const { id } = jwt.verify(token, JWT_SECRET);
-		console.log(id);
 		const user = await User.findById(id);
 
 		if (!user) {
 			next(HttpError(401));
 		}
 		req.user = user;
-		// console.log(req.user)
+		console.log(req.user);
 		next();
 	} catch (error) {
 		next(HttpError(401));

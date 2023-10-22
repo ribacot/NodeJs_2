@@ -14,9 +14,9 @@ const login = async (req, res) => {
 	if (!user) {
 		throw HttpError(401);
 	}
-	if (user.token) {
-		throw HttpError(409, "User in session");
-	}
+	// if (user.token) {
+	// 	throw HttpError(409, "User in session");
+	// }
 
 	const passwordMatch = await bcrypt.compare(password, user.password);
 	if (!passwordMatch) {
