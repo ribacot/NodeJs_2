@@ -1,7 +1,7 @@
 const Joi = require("joi");
 const patterns = require("../../helpers/patterns");
+const { subscriptionTags } = require("../../helpers");
 
-const subscriptionTags = ["starter", "pro", "business"];
 
 const registerSechemaJoi = Joi.object({
 	name: Joi.string().required(),
