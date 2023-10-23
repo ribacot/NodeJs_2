@@ -10,7 +10,6 @@ const login = async (req, res) => {
 	console.log(email);
 
 	const user = await User.findOne({ email });
-	console.log(user);
 	if (!user) {
 		throw HttpError(401);
 	}
