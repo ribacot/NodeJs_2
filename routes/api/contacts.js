@@ -1,24 +1,32 @@
 const express = require("express");
 const router = express.Router();
 
-const  ctrlContacts  = require("../../controllers/contacts/index");
 
-const { validateBody, isValidId } = require("../../middlewares");
+const ctrlContacts = require("../../controllers/contacts/index");
 
-const { schemasJoi } = require("../../schemas");
+const { validateBody, isValidId, isAuthenticated } = require("../../middlewares");
 
-router.get("/", ctrlContacts.getAll);
+const { schemasJoi } = require("../../schemas/contacts");
 
-router.get("/:contactId", isValidId, ctrlContacts.getById);
+router.get("/", isAuthenticated, ctrlContacts.getAll);
 
-router.post("/", validateBody(schemasJoi.addSchem), ctrlContacts.add);
+router.get("/:contactId", isAuthenticated, isValidId, ctrlContacts.getById);
 
-router.delete("/:contactId", isValidId, ctrlContacts.delContact);
+router.post("/", isAuthenticated, validateBody(schemasJoi.addSchem), ctrlContacts.add);
 
-router.put("/:contactId", isValidId, validateBody(schemasJoi.addSchem), ctrlContacts.updContact);
+router.delete("/:contactId", isAuthenticated, isValidId, ctrlContacts.delContact);
+
+router.put(
+	"/:contactId",
+	isAuthenticated,
+	isValidId,
+	validateBody(schemasJoi.addSchem),
+	ctrlContacts.updContact
+);
 
 router.patch(
 	"/:contactId/favorite",
+	isAuthenticated,
 	isValidId,
 	validateBody(schemasJoi.favoriteSchem),
 	ctrlContacts.updFavorite

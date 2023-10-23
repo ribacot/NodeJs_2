@@ -1,5 +1,5 @@
 const Joi = require("joi");
-const patterns = require("./patterns");
+const patterns = require("../../helpers/patterns");
 
 const addSchem = Joi.object({
 	name: Joi.string().required(),

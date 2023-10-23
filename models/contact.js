@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
-const { patterns } = require("../schemas/");
+const { patterns } = require("../schemas/contacts");
+const { hendleMongooseError } = require("../helpers");
 
 const contactSchema = Schema(
 	{
@@ -18,14 +19,16 @@ const contactSchema = Schema(
 			required: true,
 		},
 		favorite: { type: Boolean, default: false },
+		owner: {
+			type: Schema.Types.ObjectId,
+			ref: "user",
+			required: true,
+		},
 	},
 	{ versionKey: false, timestamps: true }
 );
 
-contactSchema.post("save", (error, data, next) => {
-	error.status = 400;
-	next();
-});
+contactSchema.post("save", hendleMongooseError);
 
 const Contact = model("contact", contactSchema);
 module.exports = Contact;
