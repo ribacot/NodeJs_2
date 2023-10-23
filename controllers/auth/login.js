@@ -5,17 +5,29 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 const { HttpError } = require("../../helpers");
 
-const login = async (req, res) => {
+const login = async (req, res, next) => {
 	const { email, password } = req.body;
-	console.log(email);
 
 	const user = await User.findOne({ email });
+
 	if (!user) {
 		throw HttpError(401);
 	}
-	// if (user.token) {
-	// 	throw HttpError(409, "User in session");
-	// }
+
+	if (user.token) {
+		try {
+			const { id } = jwt.verify(user.token, JWT_SECRET);
+
+			if (id) {
+				throw HttpError(409, "User in session");
+			}
+			next();
+		} catch (error) {
+			if (error.message !== "jwt expired") {
+				next(error);
+			}
+		}
+	}
 
 	const passwordMatch = await bcrypt.compare(password, user.password);
 	if (!passwordMatch) {
@@ -25,7 +37,7 @@ const login = async (req, res) => {
 	const payload = {
 		id: user._id,
 	};
-	const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "2h" });
+	const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "10s" });
 	await User.updateOne({ _id: user._id }, { token });
 	res.status(201).json({
 		token,
