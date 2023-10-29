@@ -21,6 +21,10 @@ const userSchema = new Schema(
 			enum: subscriptionTags,
 			default: "starter",
 		},
+		avatarURL: {
+			type: String,
+			required: true,
+		},
 		token: {
 			type: String,
 			default: "",
@@ -30,6 +34,6 @@ const userSchema = new Schema(
 );
 userSchema.post("save", hendleMongooseError);
 
-const User = model("User", userSchema);
+const User = model("user", userSchema);
 
 module.exports = User;

@@ -4,16 +4,12 @@ const jwt = require("jsonwebtoken");
 const JWT_SECRET = process.env.JWT_SECRET;
 
 const { HttpError, islogin } = require("../../helpers");
+const isUser = require("../../helpers/isUser");
 
 const login = async (req, res, next) => {
 	const { email, password } = req.body;
-
-	const user = await User.findOne({ email });
-
-	if (!user) {
-		throw HttpError(401);
-	}
-	islogin(user,next);
+	const user = await isUser(email);
+	islogin(user, next);
 
 	const passwordMatch = await bcrypt.compare(password, user.password);
 	if (!passwordMatch) {
@@ -23,9 +19,9 @@ const login = async (req, res, next) => {
 	const payload = {
 		id: user._id,
 	};
-	const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "50s" });
+	const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "4h" });
 	await User.updateOne({ _id: user._id }, { token });
-	res.status(201).json({
+	return res.status(201).json({
 		token,
 		user: {
 			name: user.name,

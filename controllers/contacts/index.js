@@ -6,7 +6,7 @@ const add = require("./add");
 const delContact = require("./delContact");
 const updContact = require("./updContact");
 const updFavorite = require("./updFavorite");
-
+const updAvatar = require("./updAvatar");
 
 module.exports = {
 	getAll: ctrlWrapper(getAll),
@@ -15,4 +15,5 @@ module.exports = {
 	updContact: ctrlWrapper(updContact),
 	add: ctrlWrapper(add),
 	updFavorite: ctrlWrapper(updFavorite),
-};;
+	updAvatar: ctrlWrapper(updAvatar),
+};

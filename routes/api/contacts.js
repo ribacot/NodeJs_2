@@ -1,10 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-
 const ctrlContacts = require("../../controllers/contacts/index");
 
-const { validateBody, isValidId, isAuthenticated } = require("../../middlewares");
+const { validateBody, isValidId, isAuthenticated, upload } = require("../../middlewares");
 
 const { schemasJoi } = require("../../schemas/contacts");
 
@@ -30,6 +29,12 @@ router.patch(
 	isValidId,
 	validateBody(schemasJoi.favoriteSchem),
 	ctrlContacts.updFavorite
+);
+router.patch(
+	"/:contactId/avatars",
+	isAuthenticated,
+	isValidId,
+	upload.single("avatarURL"),ctrlContacts.updAvatar
 );
 
 module.exports = router;
