@@ -3,23 +3,29 @@ const path = require("path");
 const fs = require("fs").promises;
 
 const Jimp = require("jimp");
+const HttpError = require("./HttpError");
 
 const avatarDir = path.join(__dirname, "..", "public", "avatars");
 
 const chengeAvatar = async (file, id) => {
 	
-	console.log(file);
 	const { path: tempUpload, originalname } = file;
 
-	const img = await Jimp.read(tempUpload);
-	const imgResize = img.cover(250, 250).quality(60).write(tempUpload);
-	const nameAvatar = `${id}${originalname}`;
+	try {
+		const img = await Jimp.read(tempUpload);
+		img.cover(250, 250).quality(60).write(tempUpload);
 
-	const resultUpload = path.join(avatarDir, nameAvatar);
+		const nameAvatar = `${id}${originalname}`;
 
-	await fs.rename(tempUpload, resultUpload);
+		const resultUpload = path.join(avatarDir, nameAvatar);
 
-	return path.join("avatars", nameAvatar);
+		await fs.rename(tempUpload, resultUpload);
+
+		return path.join("avatars", nameAvatar);
+	} catch (error) {
+		await fs.unlink(tempUpload);
+		throw HttpError(400);
+	}
 };
 
 module.exports = chengeAvatar;

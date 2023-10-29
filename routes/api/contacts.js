@@ -34,7 +34,8 @@ router.patch(
 	"/:contactId/avatars",
 	isAuthenticated,
 	isValidId,
-	upload.single("avatarURL"),ctrlContacts.updAvatar
+	upload.single("avatarURL"),
+	ctrlContacts.updAvatar
 );
 
 module.exports = router;

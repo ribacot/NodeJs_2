@@ -4,7 +4,6 @@ const Contact = require("../../models/contact");
 const updAvatar = async (req, res, next) => {
 	const { contactId } = req.params;
 
-	console.log(contactId);
 
 	if (!req.file) {
 		throw HttpError(400);

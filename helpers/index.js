@@ -13,6 +13,5 @@ module.exports = {
 	islogin,
 	pattern,
 	subscriptionTags,
-	chengeAvatar
-
+	chengeAvatar,
 };
