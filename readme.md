@@ -8,7 +8,7 @@
 - **`https://nodejs-2.onrender.com/auth/current`** - GET запит, Перевірка що користувач зареєстрований у додатку;
 - **`https://nodejs-2.onrender.com/auth/verify`** - POST запит,  повторна відправка листа для підтвердження Email;
 
-##  Зміни для користувача
+##  Користувач
 
 - **`https://nodejs-2.onrender.com/users`** - PATH запит, зміна підписки;
 - **`https://nodejs-2.onrender.com/users/avatars `**-  PATH запит, встановлення кастомної аватарки користувача;
