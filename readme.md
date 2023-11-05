@@ -11,7 +11,7 @@
         subscription: ["starter", "pro", "business"].required    
     }
 - **`https://nodejs-2.onrender.com/auth/login`** - POST запит, Реєстрація користувача у додатку;
-        - Зразок body:      
+    - Зразок body:      
         {          
         email: `qwerty@qwerty.com`,  
         password: min(6) required,  
@@ -29,7 +29,7 @@
 ##  Користувач
 
 - **`https://nodejs-2.onrender.com/users`** - PATH запит, зміна підписки;
-        - Зразок body:      
+    - Зразок body:      
         {          
         subscription: ["starter", "pro", "business"].required    
         }
@@ -39,7 +39,7 @@
 - **`https://nodejs-2.onrender.com/contacts`** - GET запит, вертає усі контакти користувача;
  - **`https://nodejs-2.onrender.com/contacts/:contactId`** - GET запит, пошук контакта по id ;
  - **`https://nodejs-2.onrender.com/contacts`** - POST запит, додавання контакту;
-         - Зразок body:      
+    - Зразок body:      
         {  
         name: string required,             
         email: `qwerty@qwerty.com` required,   
@@ -48,7 +48,7 @@
         }
  - **`https://nodejs-2.onrender.com/contacts/:contactId`** - DELETE запит, видалення контакту за id;
  - **`https://nodejs-2.onrender.com/contacts/:contactId`** - PUT запит, редагування контакту за id;
-          - Зразок body:      
+    - Зразок body:      
         {  
         name: string .required,             
         email: `qwerty@qwerty.com` required,   
@@ -56,7 +56,7 @@
 	    favorite: boolean,              
         }
  - **`https://nodejs-2.onrender.com/contacts/:contactId/favorite`** - PATCH запит, редагування поля favorite (true, false) у контакті;
-          - Зразок body:      
+    - Зразок body:      
         {  
 	    favorite: boolean,              
         }
