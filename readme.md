@@ -43,7 +43,7 @@
         {  
         name: string required,             
         email: `qwerty@qwerty.com` required,   
-	    phone: (123) 123-1234 required(),   
+	    phone: (123) 123-1234 required,   
 	    favorite: boolean,              
         }
  - **`https://nodejs-2.onrender.com/contacts/:contactId`** - DELETE запит, видалення контакту за id;
@@ -52,7 +52,7 @@
         {  
         name: string .required,             
         email: `qwerty@qwerty.com` required,   
-	    phone: (123) 123-1234 required(),   
+	    phone: (123) 123-1234 required,   
 	    favorite: boolean,              
         }
  - **`https://nodejs-2.onrender.com/contacts/:contactId/favorite`** - PATCH запит, редагування поля favorite (true, false) у контакті;
