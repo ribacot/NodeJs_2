@@ -3,7 +3,7 @@
 ## Authentication
 
 - **`https://nodejs-2.onrender.com/auth/register`** - POST запит, Створенняя нового користувача у додатку;
-    - Зразок body:   {
+    - Зразок body:{        
         name:String. required,  
         email:`qwerty@qwerty.com`,  
         password: min(6).required,  
