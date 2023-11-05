@@ -5,9 +5,9 @@ const hendleMongooseError = require("./hendleMongooseError");
 const islogin = require("./isLgin");
 
 const pattern = require("./patterns");
-const sendEmail = require("./sendEmail");
+const sendEmail = require("../services/email/sendEmail");
 const subscriptionTags = require("./subscriptionTags");
-const verificationMail = require("./verificationMail");
+const verificationMail = require("../services/email/verificationMail");
 
 module.exports = {
 	HttpError,
