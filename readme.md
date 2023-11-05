@@ -20,7 +20,7 @@
 - **`https://nodejs-2.onrender.com/auth/logout`** - POST запит, Вихід користувача з додатку;
 - **`https://nodejs-2.onrender.com/auth/current`** - GET запит, Перевірка що користувач зареєстрований у додатку;
 - **`https://nodejs-2.onrender.com/auth/verify`** - POST запит,  повторна відправка листа для підтвердження Email;
-      - Зразок body:      
+    - Зразок body:      
         {          
         email: `qwerty@qwerty.com`,  
         }
