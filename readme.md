@@ -10,8 +10,8 @@
 
 ##  Зміни для користувача
 
-- **`https://nodejs-2.onrender.com/users`** - PAth запит, зміна підписки;
-- **`https://nodejs-2.onrender.com/users/avatars `**-  PAth запит, встановлення кастомної аватарки користувача;
+- **`https://nodejs-2.onrender.com/users`** - PATH запит, зміна підписки;
+- **`https://nodejs-2.onrender.com/users/avatars `**-  PATH запит, встановлення кастомної аватарки користувача;
 
 ##  Контакти
 - **`https://nodejs-2.onrender.com/contacts`** - GET запит, вертає усі контакти користувача;
