@@ -5,7 +5,10 @@ const hendleMongooseError = require("./hendleMongooseError");
 const islogin = require("./isLgin");
 
 const pattern = require("./patterns");
+const sendEmail = require("./sendEmail");
 const subscriptionTags = require("./subscriptionTags");
+const verificationMail = require("./verificationMail");
+
 module.exports = {
 	HttpError,
 	ctrlWrapper,
@@ -13,5 +16,7 @@ module.exports = {
 	islogin,
 	pattern,
 	subscriptionTags,
+	verificationMail,
 	chengeAvatar,
+	sendEmail,
 };

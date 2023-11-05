@@ -1,14 +1,13 @@
 const path = require("path");
-
 const fs = require("fs").promises;
-
 const Jimp = require("jimp");
+
 const HttpError = require("./HttpError");
 
 const avatarDir = path.join(__dirname, "..", "public", "avatars");
 
 const chengeAvatar = async (file, id) => {
-	
+
 	const { path: tempUpload, originalname } = file;
 
 	try {
