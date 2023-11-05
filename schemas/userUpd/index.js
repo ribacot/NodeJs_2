@@ -1,3 +1,3 @@
 const subscriptionSchemJoi = require('./subscription')
 
-module.exports = {subscriptionSchemJoi}
+module.exports = {subscriptionSchemJoi,}
