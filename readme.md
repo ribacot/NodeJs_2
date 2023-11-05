@@ -1,31 +1,24 @@
-## GoIT Node.js Course Template Homework
+# Опис роутів
 
-Виконайте форк цього репозиторію для виконання домашніх завдань (2-6)
-Форк створить репозиторій на вашому http://github.com
+## Authentication
 
-Додайте ментора до колаборації
+- https://nodejs-2.onrender.com/auth/register -  POST запит, Створенняя нового користувача у додатку;
+- https://nodejs-2.onrender.com/auth/login - POST запит, Реєстрація користувача у додатку;
+- https://nodejs-2.onrender.com/auth/logout - POST запит, Вихід користувача з додатку;
+- https://nodejs-2.onrender.com/auth/current -GET запит, Перевірка що користувач зареєстрований у додатку;
+- https://nodejs-2.onrender.com/auth/verify - POST запит,  повторна відправка листа для підтвердження Email;
 
-Для кожної домашньої роботи створюйте свою гілку.
+##  Зміни для користувача
 
-- hw02
-- hw03
-- hw04
-- hw05
-- hw06
+- https://nodejs-2.onrender.com/users - PAth запит, зміна підписки;
+- https://nodejs-2.onrender.com/users/avatars -  PAth запит, встановлення кастомної аватарки користувача;
 
-Кожна нова гілка для др повинна робитися з master
+##  Контакти
 
-Після того, як ви закінчили виконувати домашнє завдання у своїй гілці, необхідно зробити пулл-реквест (PR). Потім додати ментора для рев'ю коду. Тільки після того, як ментор заапрувить PR, ви можете виконати мердж гілки з домашнім завданням у майстер.
-
-Уважно читайте коментарі ментора. Виправте зауваження та зробіть коміт у гілці з домашнім завданням. Зміни підтягнуться у PR автоматично після того, як ви відправите коміт з виправленнями на github
-Після виправлення знову додайте ментора на рев'ю коду.
-
-- При здачі домашньої роботи є посилання на PR
-- JS-код чистий та зрозумілий, для форматування використовується Prettier
-
-### Команди:
-
-- `npm start` &mdash; старт сервера в режимі production
-- `npm run start:dev` &mdash; старт сервера в режимі розробки (development)
-- `npm run lint` &mdash; запустити виконання перевірки коду з eslint, необхідно виконувати перед кожним PR та виправляти всі помилки лінтера
-- `npm lint:fix` &mdash; та ж перевірка лінтера, але з автоматичними виправленнями простих помилок
+- https://nodejs-2.onrender.com/contacts - GET запит, вертає усі контакти користувача;
+ - https://nodejs-2.onrender.com/contacts/:contactId - GET запит, пошук контакта по id  
+ - https://nodejs-2.onrender.com/contacts - POST запит, додавання контакту;
+ - https://nodejs-2.onrender.com/contacts/:contactId - DELETE запит, видалення контакту за id;
+ - https://nodejs-2.onrender.com/contacts/:contactId - PUT запит, редагування контакту за id;
+ - https://nodejs-2.onrender.com/contacts/:contactId/favorite - PATCH запит, редагування поля favorite (true, false) у контакті;
+ - https://nodejs-2.onrender.com/contacts/:contactId/avatars - PATCH запит, зміна аватарки контакту
