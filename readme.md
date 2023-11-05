@@ -8,7 +8,7 @@
         name: String required,  
         email: `qwerty@qwerty.com`,  
         password: min(6) required,  
-        subscription: ["starter", "pro", "business"].required    
+        subscription: "starter", "pro", "business" required    
     }
 - **`https://nodejs-2.onrender.com/auth/login`** - POST запит, Реєстрація користувача у додатку;
     - Зразок body:      
@@ -31,7 +31,7 @@
 - **`https://nodejs-2.onrender.com/users`** - PATH запит, зміна підписки;
     - Зразок body:      
         {          
-        subscription: ["starter", "pro", "business"].required    
+        subscription: "starter", "pro", "business" required    
         }
 
 - **`https://nodejs-2.onrender.com/users/avatars `**-  PATH запит, встановлення кастомної аватарки користувача;
