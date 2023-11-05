@@ -2,15 +2,15 @@
 
 ## Authentication
 
-- <https://nodejs-2.onrender.com/auth/register>-  POST запит, Створенняя нового користувача у додатку;
-- https://nodejs-2.onrender.com/auth/login - POST запит, Реєстрація користувача у додатку;
-- https://nodejs-2.onrender.com/auth/logout - POST запит, Вихід користувача з додатку;
-- https://nodejs-2.onrender.com/auth/current -GET запит, Перевірка що користувач зареєстрований у додатку;
-- https://nodejs-2.onrender.com/auth/verify - POST запит,  повторна відправка листа для підтвердження Email;
+- `https://nodejs-2.onrender.com/auth/register` - POST запит, Створенняя нового користувача у додатку;
+- `https://nodejs-2.onrender.com/auth/login` - POST запит, Реєстрація користувача у додатку;
+- `https://nodejs-2.onrender.com/auth/logout` - POST запит, Вихід користувача з додатку;
+- `https://nodejs-2.onrender.com/auth/current` - GET запит, Перевірка що користувач зареєстрований у додатку;
+- `https://nodejs-2.onrender.com/auth/verify` - POST запит,  повторна відправка листа для підтвердження Email;
 
 ##  Зміни для користувача
 
-- https://nodejs-2.onrender.com/users - PAth запит, зміна підписки;
+- `==https://nodejs-2.onrender.com/users==` - PAth запит, зміна підписки;
 - https://nodejs-2.onrender.com/users/avatars -  PAth запит, встановлення кастомної аватарки користувача;
 
 ##  Контакти
