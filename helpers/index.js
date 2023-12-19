@@ -8,12 +8,14 @@ const pattern = require("./patterns");
 const sendEmail = require("../services/email/sendEmail");
 const subscriptionTags = require("./subscriptionTags");
 const verificationMail = require("../services/email/verificationMail");
+// const isUser = require("./isUser");
 
 module.exports = {
 	HttpError,
 	ctrlWrapper,
 	hendleMongooseError,
 	islogin,
+	// isUser,
 	pattern,
 	subscriptionTags,
 	verificationMail,

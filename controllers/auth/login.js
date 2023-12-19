@@ -3,8 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = process.env.JWT_SECRET;
 
-const { HttpError, islogin,sendEmail } = require("../../helpers");
-const isUser = require("../../helpers/isUser");
+const { HttpError, islogin, isUser, } = require("../../helpers");
 
 const login = async (req, res, next) => {
 	const { email, password } = req.body;

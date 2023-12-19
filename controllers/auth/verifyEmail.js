@@ -1,4 +1,4 @@
-const isUser = require("../../helpers/isUser");
+const { isUser } = require("../../helpers");
 
 const verifyEmail = async (req, res) => {
 	const { verificationCode } = req.params;

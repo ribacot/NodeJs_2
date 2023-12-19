@@ -5,6 +5,7 @@ require("dotenv").config();
 const contactsRouter = require("./routes/api/contacts");
 const authRouter = require("./routes/api/auth");
 const usersRouter = require("./routes/api/users");
+const frendsRouter = require("./routes/api/friends");
 const app = express();
 
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
@@ -15,9 +16,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"))
 
-app.use("/api/auth", authRouter);
-app.use("/api/contacts", contactsRouter);
-app.use("/api/users", usersRouter);
+// app.use("/api/auth", authRouter);
+// app.use("/api/contacts", contactsRouter);
+// app.use("/api/users", usersRouter);
+app.use("/api/friends", frendsRouter);
 
 app.use((req, res) => {
 	res.status(404).json({ message: "Not found" });
